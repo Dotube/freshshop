@@ -8,14 +8,14 @@
     <div class="loginform" >
     <van-form @submit="onSubmit">
       <van-field
-          v-model="username"
+          v-model="form.name"
           name="用户名"
           label="用户名"
           placeholder="用户名"
           :rules="[{ required: true, message: '请填写用户名' }]"
       />
       <van-field
-          v-model="password"
+          v-model="form.password"
           type="password"
           name="密码"
           label="密码"
@@ -38,24 +38,45 @@
 </template>
 
 <script>
+import axios from 'axios'
+import {HOST} from '../../common/config'
 export default {
 name: "Login",
   data() {
     return {
-      username: '',
-      password: '',
+      form:{
+        name: '',
+        password: '',
+      }
     };
   },
   methods: {
     onSubmit(values) {
+      let url= `${HOST}/user/login`
       console.log('submit', values);
+      axios.post(url,this.form).then(res=>{
+        console.log(res.data)
+        let response =res.data;
+        switch (response.msg){
+            case '1':
+              sessionStorage.setItem("user",JSON.stringify(this.form))
+              this.$router.push('/profile')
+              break;
+            case '0':
+              this.$toast.fail('密码错误')
+              break;
+            case '2':
+              this.$toast.fail('用户不存在')
+        }
+      })
     },
     onClickLeft(){
       this.$router.go(-1)
     },
     regsiterclick(){
       this.$router.push('register')
-    }
+    },
+
   },
 }
 </script>

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { Button ,Field,Form,Sidebar,  Col, Row ,SidebarItem,Search , Tabbar, TabbarItem ,
-  NavBar ,Icon,  Popup,Tag ,Uploader ,Swipe, SwipeItem,Lazyload,Grid, GridItem,Image as VanImage} from 'vant';
+  NavBar ,Icon, Toast, Popup,Tag ,Uploader ,Swipe, SwipeItem,Lazyload,Grid, GridItem,Image as VanImage} from 'vant';
 
 Vue.use(Button);
 Vue.use(Search);
@@ -23,3 +23,4 @@ Vue.use(Field);
 Vue.use(Uploader);
 Vue.use(Popup);
 Vue.use(Tag);
+Vue.use(Toast);
