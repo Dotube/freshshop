@@ -15,8 +15,6 @@
 <script>
 
 import Me from "@/components/me";
-import axios from 'axios'
-import {HOST} from '../../common/config'
 export default {
   name: "Profile",
 
@@ -41,10 +39,7 @@ export default {
     }
   },
   created() {
-    let url= `${HOST}/user/selAll`
-    axios.post(url).then(res=>{
-      console.log(res.data)
-    })
+
     this.user.name = '点击登录'
     if(JSON.parse(sessionStorage.getItem("user")) )
     this.user = JSON.parse(sessionStorage.getItem("user"))

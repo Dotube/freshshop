@@ -2,7 +2,8 @@
   <div class="grid" >
     <van-grid clickable :column-num="4" square :border="false" >
       <van-grid-item v-for="(item,index) in list" :key="index" to="/">
-        <img :src="item.image" />
+        <img class="img" :src="item.image" />
+        <img class="img2" :src="item.image2" />
         <span>{{item.title}}</span>
       </van-grid-item>
 
@@ -16,18 +17,18 @@ name: "grid",
   data() {
     return {
       list:[
-        {id:0,image:require('@/assets/images/fruit.jpg'),title:'蔬菜'},
-        {id:1,image:require('@/assets/images/fruit.jpg'),title:'水果'},
-        {id:2,image:require('@/assets/images/fruit.jpg'),title:'海鲜'},
-        {id:3,image:require('@/assets/images/fruit.jpg'),title:'肉蛋'},
-        {id:4,image:require('@/assets/images/fruit.jpg'),title:'烘培'},
-        {id:5,image:require('@/assets/images/fruit.jpg'),title:'酒水'},
-        {id:6,image:require('@/assets/images/fruit.jpg'),title:'速食'},
-        {id:7,image:require('@/assets/images/fruit.jpg'),title:'零食'},
-        {id:8,image:require('@/assets/images/fruit.jpg'),title:'百货'},
-        {id:9,image:require('@/assets/images/fruit.jpg'),title:'熟食'},
-        {id:10,image:require('@/assets/images/fruit.jpg'),title:'热卖'},
-        {id:11,image:require('@/assets/images/fruit.jpg'),title:'全部'},
+        {id:0,image:require('@/assets/images/shucai.png'),title:'蔬菜'},
+        {id:1,image:require('@/assets/images/shuiguo.png'),title:'水果'},
+        {id:2,image:require('@/assets/images/haixian.png'),title:'海鲜'},
+        {id:3,image:require('@/assets/images/rou.png'),title:'肉蛋'},
+        {id:4,image2:require('@/assets/images/hongbei.png'),title:'烘培'},
+        {id:5,image2:require('@/assets/images/jiu.png'),title:'酒水'},
+        {id:6,image2:require('@/assets/images/sushi.png'),title:'速食'},
+        {id:7,image2:require('@/assets/images/lingshi.png'),title:'零食'},
+        {id:8,image2:require('@/assets/images/shenghuo.png'),title:'百货'},
+        {id:9,image2:require('@/assets/images/shushi.png'),title:'熟食'},
+        {id:10,image2:require('@/assets/images/rexiao.png'),title:'热卖'},
+        {id:11,image2:require('@/assets/images/quanbu.png'),title:'全部'},
       ]
     };
   },
@@ -40,4 +41,7 @@ name: "grid",
   margin-top: 5px;
 }
 
+.img2{
+  width: 70%;
+}
 </style>
