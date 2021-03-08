@@ -2,10 +2,10 @@
   <div >
   <van-row>
     <van-col span="6">
-      <van-image :src="firsticon"></van-image>
+      <van-image :src="firsticon" round @click="avator"></van-image>
     </van-col>
     <van-col  span="8" @click="loginclick" >{{user.name}}</van-col>
-    <van-col span="10"><van-icon name="arrow" /></van-col>
+    <van-col span="10"><van-icon name="arrow" @click="logout"/></van-col>
   </van-row>
     <me></me>
   </div>
@@ -15,7 +15,8 @@
 <script>
 
 import Me from "@/components/me";
-
+import axios from 'axios'
+import {HOST} from '../../common/config'
 export default {
   name: "Profile",
 
@@ -28,18 +29,33 @@ export default {
                this.$router.push('login')
                console.log('loginclick');
       }
+    },
+    logout(){
+
+    },
+    avator(){
+      if (this.user.name =='点击登录')    {
+        this.$router.push('login')
+      }
+      else this.$router.push('updateinfo')
     }
   },
   created() {
+    let url= `${HOST}/user/selAll`
+    axios.post(url).then(res=>{
+      console.log(res.data)
+    })
     this.user.name = '点击登录'
     if(JSON.parse(sessionStorage.getItem("user")) )
     this.user = JSON.parse(sessionStorage.getItem("user"))
+
   },
   data(){
     return{
       firsticon:require('@/assets/images/firsticon.jpg'),
+     // firsticon:this.user.icon,
       user:{},
-
+      record:[],
 
 
     }

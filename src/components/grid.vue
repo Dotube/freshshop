@@ -37,7 +37,7 @@ name: "grid",
 <style scoped>
 .grid{
   background-color: white;
-  margin: 10px;
+  margin-top: 5px;
 }
 
 </style>

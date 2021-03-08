@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Login from "@/views/login/Login";
 import Register from "@/views/login/Register";
 import Mypopup from "@/views/home/Mypopup";
+import Updateinfo from "@/views/profile/Updateinfo";
 
 const Home = () => import('views/home/Home')
 const Category = () => import('views/category/Category')
@@ -59,6 +60,10 @@ const routes = [
   {
     path: '/register',
     component:Register
+  },
+  {
+    path: '/updateinfo',
+    component:Updateinfo
   },
 ]
 const router = new VueRouter({

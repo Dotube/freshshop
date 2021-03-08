@@ -10,12 +10,35 @@
     <van-grid-item icon="scan" text="扫一扫" />
     <van-grid-item icon="smile-comment-o" text="意见反馈" />
     <van-grid-item icon="question-o" text="帮助中心" />
+    <van-grid-item icon="close" text="退出" @click="logout"/>
   </van-grid>
 </template>
 
 <script>
 export default {
 name: "me",
+  methods:{
+    logout(){
+      if (this.user.name =='点击登录')    {
+        this.$toast.fail("请先登录")
+      }
+      else {
+        window.sessionStorage.clear()
+        this.$router.push('login')
+      }
+
+    }
+  },
+  created() {
+    this.user.name = '点击登录'
+    if(JSON.parse(sessionStorage.getItem("user")) )
+      this.user = JSON.parse(sessionStorage.getItem("user"))
+  },
+  data(){
+  return{
+    user:{},
+  }
+  }
 }
 </script>
 
