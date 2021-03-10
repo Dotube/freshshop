@@ -1,12 +1,14 @@
 <template>
   <div class="search">
-    <van-search
-        v-model="Searchvalue"
-        shape="round"
-        background="#fff"
-        placeholder="请输入搜索关键词"
-        disabled
-    />
+    <van-sticky>
+        <van-search
+            v-model="Searchvalue"
+            shape="round"
+            background="#fff"
+            placeholder="请输入搜索关键词"
+            disabled
+        />
+    </van-sticky>
   </div>
 </template>
 
@@ -15,7 +17,8 @@ export default {
 name: "search",
   data(){
     return {
-      Searchvalue: ''
+      Searchvalue: '',
+      container: null,
     }
   },
 }

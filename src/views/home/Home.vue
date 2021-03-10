@@ -7,6 +7,7 @@
    <transition name="van-slide-right">
      <router-view></router-view>
    </transition>
+    <product></product>
   </div>
 </template>
 
@@ -15,9 +16,11 @@
 import Swipe from "@/components/swipe";
 import Grid from "@/components/grid";
 import Search from "@/components/search";
+import Product from "@/components/product";
 export default {
   name: "Home",
   components: {
+    Product,
     Search,
     Grid,
     Swipe

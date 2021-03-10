@@ -4,6 +4,7 @@ import Login from "@/views/login/Login";
 import Register from "@/views/login/Register";
 import Mypopup from "@/views/home/Mypopup";
 import Updateinfo from "@/views/profile/Updateinfo";
+import ProductDetail from "@/views/product/ProductDetail";
 
 const Home = () => import('views/home/Home')
 const Category = () => import('views/category/Category')
@@ -64,6 +65,10 @@ const routes = [
   {
     path: '/updateinfo',
     component:Updateinfo
+  },
+  {
+    path: '/productdetail',
+    component:ProductDetail
   },
 ]
 const router = new VueRouter({

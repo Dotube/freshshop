@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+import {HOST} from '../../common/config'
 export default {
 name: "Updateinfo",
   methods:{
@@ -28,9 +30,18 @@ name: "Updateinfo",
       console.log(file);
     },
   },
+  created() {
+    let url= `${HOST}/user/selAva`;
+    axios.post(url,this.form).then(res=>{
+          console.log(res.data)
+  })
+  },
   data(){
     return {
-      firsticon: require('@/assets/images/firsticon.jpg')
+      firsticon: require('@/assets/images/firsticon.jpg'),
+      form:{
+        icon:''
+      }
     }
   }
 }
