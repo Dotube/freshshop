@@ -1,13 +1,17 @@
 import Vue from 'vue';
 import { Button ,Field,Form,Sidebar,  Col, Row ,SidebarItem,Search , Tabbar, TabbarItem ,
-  NavBar ,Icon, Toast, Sticky,Popup,Tag ,Uploader ,Swipe, SwipeItem,Lazyload,Grid,
+  NavBar ,Icon, GoodsAction,Sku, GoodsActionIcon, GoodsActionButton ,Toast, Sticky,Popup,Tag ,Uploader ,Swipe, SwipeItem,Lazyload,Grid,
   GridItem,Image as VanImage} from 'vant';
 
 Vue.use(Button);
 Vue.use(Search);
 Vue.use(Tabbar);
+Vue.use(Sku);
 Vue.use(TabbarItem);
 Vue.use(NavBar);
+Vue.use(GoodsAction);
+Vue.use(GoodsActionButton);
+Vue.use(GoodsActionIcon);
 Vue.use(Icon);
 Vue.use(Swipe);
 Vue.use(SwipeItem);
