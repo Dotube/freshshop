@@ -1,15 +1,21 @@
 import Vue from 'vue';
 import { Button ,Field,Form,Sidebar,  Col, Row ,SidebarItem,Search , Tabbar, TabbarItem ,
-  NavBar ,Icon, GoodsAction,Sku, GoodsActionIcon, GoodsActionButton ,Toast, Sticky,Popup,Tag ,Uploader ,Swipe, SwipeItem,Lazyload,Grid,
+  NavBar ,Icon, GoodsAction,Sku, Card,GoodsActionIcon, GoodsActionButton ,Toast, Sticky,Popup,
+  Tag ,Uploader ,Swipe, SwipeItem,Lazyload,Grid,Checkbox, SubmitBar ,CheckboxGroup,AddressList,AddressEdit,
   GridItem,Image as VanImage} from 'vant';
 
 Vue.use(Button);
 Vue.use(Search);
 Vue.use(Tabbar);
+Vue.use(Checkbox);
+Vue.use(CheckboxGroup);
+Vue.use(AddressEdit);
+Vue.use(AddressList);
 Vue.use(Sku);
 Vue.use(TabbarItem);
 Vue.use(NavBar);
 Vue.use(GoodsAction);
+Vue.use(SubmitBar);
 Vue.use(GoodsActionButton);
 Vue.use(GoodsActionIcon);
 Vue.use(Icon);
@@ -30,3 +36,4 @@ Vue.use(Popup);
 Vue.use(Tag);
 Vue.use(Toast);
 Vue.use(Sticky);
+Vue.use(Card);

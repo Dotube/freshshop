@@ -15,7 +15,10 @@
 <script>
 import axios from 'axios'
 import {HOST} from '../../common/config'
+import store from "@/store/store";
 import Me from "@/components/me";
+
+
 export default {
   name: "Profile",
 
@@ -40,13 +43,15 @@ export default {
     }
   },
   created() {
-
     this.user.name = '点击登录'
     if(JSON.parse(sessionStorage.getItem("user")) )
     this.user = JSON.parse(sessionStorage.getItem("user"))
-    let url= `${HOST}/user/selAll`;
-    axios.post(url,this.form).then(res=>{
+    let url= `${HOST}/user/selbyname/${this.user.name}`;
+    axios.get(url).then(res=>{
       console.log(res.data)
+      this.userInfo = res.data
+      store.state.userid = this.userInfo.id
+      console.log(store.state.userid)
     })
   },
   data(){

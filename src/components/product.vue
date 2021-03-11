@@ -12,7 +12,7 @@
 <script>
 import {HOST} from "@/common/config";
 import axios from "axios";
-import store from "@/store/store";
+//import store from "@/store/store";
 
 
 export default {
@@ -38,7 +38,7 @@ name: "product",
     let url= `${HOST}/goods/selbyid/${id}`
     axios.get(url);
   //  good.gdid = id;
-    store.state.gdid = id;
+   // store.state.gdid = id;
     this.$router.push('/productdetail?id='+id )
     console.log(id)
     }

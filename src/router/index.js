@@ -5,6 +5,9 @@ import Register from "@/views/login/Register";
 import Mypopup from "@/views/home/Mypopup";
 import Updateinfo from "@/views/profile/Updateinfo";
 import ProductDetail from "@/views/product/ProductDetail";
+import addresslist from "@/views/address/addresslist";
+import addressedit from "@/views/address/addressedit";
+
 
 const Home = () => import('views/home/Home')
 const Category = () => import('views/category/Category')
@@ -70,6 +73,15 @@ const routes = [
     path: '/productdetail',
     component:ProductDetail
   },
+  {
+    path: '/addresslist',
+    component:addresslist
+  },
+  {
+    path: '/addressedit',
+    component:addressedit
+  },
+
 ]
 const router = new VueRouter({
   routes,

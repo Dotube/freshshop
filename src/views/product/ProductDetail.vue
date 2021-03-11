@@ -67,7 +67,7 @@
 </template>
 
 <script>
-//import store from "@/store/store";
+import store from "@/store/store";
 import {HOST} from "@/common/config";
 import axios from "axios";
 import Tips from "@/components/tips";
@@ -101,9 +101,11 @@ export default {
     },
     gotocart(){
       this.$router.push('/cart')
+
     },
     searchbar(){
       this.$router.push('/home/popup')
+      console.log(store.state.id)
     },
     addtocart(){
       this.show=true;

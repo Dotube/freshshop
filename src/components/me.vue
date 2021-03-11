@@ -3,7 +3,7 @@
     <van-grid-item icon="bill-o" text="订单" />
     <van-grid-item icon="goods-collect-o" text="收藏" />
     <van-grid-item icon="coupon-o" text="优惠券" />
-    <van-grid-item icon="location-o" text="地址管理" />
+    <van-grid-item icon="location-o" text="地址管理" @click="address"/>
     <van-grid-item icon="service-o" text="客服" />
     <van-grid-item icon="flag-o" text="足迹" />
     <van-grid-item icon="setting-o" text="设置" />
@@ -27,6 +27,15 @@ name: "me",
         this.$router.push('login')
       }
 
+    },
+    address(){
+      if (this.user.name =='点击登录')    {
+        this.$toast.fail("请先登录")
+      }
+      else {
+        window.sessionStorage.clear()
+        this.$router.push('addresslist')
+      }
     }
   },
   created() {
