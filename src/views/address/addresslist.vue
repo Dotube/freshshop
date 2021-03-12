@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="navbar">
-      <van-nav-bar title="编辑地址" left-text="返回" left-arrow  @click-left="onClickLeft">
+      <van-nav-bar title="地址列表" left-text="返回" left-arrow  @click-left="onClickLeft">
       </van-nav-bar>
     </div>
     <van-address-list
@@ -11,6 +11,7 @@
         @add="onAdd"
         @edit="onEdit"
     />
+
   </div>
 
 </template>
@@ -40,14 +41,17 @@ export default {
   },
   methods: {
     onAdd() {
-      Toast('新增地址');
+      this.$router.push("/addressadd")
     },
     onEdit(item, index) {
-      Toast('编辑地址:' + index);
+     let id = index +1;
+      this.$router.push('/addressedit/?id='+id)
+      Toast('编辑地址:' + id);
     },
     onClickLeft() {
       this.$router.go(-1)
     },
+
   },
   created() {
     let url = `${HOST}/address/selbyuser/${store.state.userid}`;
@@ -55,6 +59,13 @@ export default {
       console.log(res.data)
       this.addressInfo = res.data
       this.list = this.addressInfo;
+
+      for(let i=0;i<this.list.length;i++)
+      {
+        this.list[i].tel=this.addressInfo[i].phone;
+      }
+
+
     })
   }
 

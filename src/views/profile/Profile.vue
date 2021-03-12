@@ -4,8 +4,11 @@
     <van-col span="6">
       <van-image :src="firsticon" round @click="avator"></van-image>
     </van-col>
-    <van-col  span="8" @click="loginclick" >{{user.name}}</van-col>
-    <van-col span="10"><van-icon name="arrow" @click="logout"/></van-col>
+    <div class="myname"  >
+      <van-col   span="8" v-if="user.name" >{{user.name}}</van-col>
+      <van-col   span="8" v-else @click="loginclick" >点击登录</van-col>
+      <van-col span="10"><van-icon name="arrow" @click="logout"/></van-col>
+    </div>
   </van-row>
     <me></me>
   </div>
@@ -27,23 +30,21 @@ export default {
   },
   methods: {
     loginclick() {
-      if (this.user.name =='点击登录')    {
                this.$router.push('login')
                console.log('loginclick');
-      }
+
     },
     logout(){
 
     },
     avator(){
-      if (this.user.name =='点击登录')    {
+      if (!this.user.name)    {
         this.$router.push('login')
       }
       else this.$router.push('updateinfo')
     }
   },
   created() {
-    this.user.name = '点击登录'
     if(JSON.parse(sessionStorage.getItem("user")) )
     this.user = JSON.parse(sessionStorage.getItem("user"))
     let url= `${HOST}/user/selbyname/${this.user.name}`;
@@ -51,7 +52,6 @@ export default {
       console.log(res.data)
       this.userInfo = res.data
       store.state.userid = this.userInfo.id
-      console.log(store.state.userid)
     })
   },
   data(){
@@ -60,7 +60,6 @@ export default {
      // firsticon:this.user.icon,
       user:{},
       record:[],
-
 
     }
   }

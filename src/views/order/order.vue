@@ -1,10 +1,17 @@
 <template>
-<div>1</div>
+<div>
+  <button @click="back">test</button>
+</div>
 </template>
 
 <script>
 export default {
-name: "order"
+name: "order",
+  methods:{
+    back(){
+      this.$router.go(-1);
+    }
+  }
 }
 </script>
 

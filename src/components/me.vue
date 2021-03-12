@@ -1,6 +1,6 @@
 <template>
   <van-grid square  clickable :column-num="3">
-    <van-grid-item icon="bill-o" text="订单" />
+    <van-grid-item icon="bill-o" text="订单"  @click="myorder"/>
     <van-grid-item icon="goods-collect-o" text="收藏" />
     <van-grid-item icon="coupon-o" text="优惠券" />
     <van-grid-item icon="location-o" text="地址管理" @click="address"/>
@@ -15,33 +15,40 @@
 </template>
 
 <script>
+import store from "@/store/store";
 export default {
 name: "me",
   methods:{
     logout(){
-      if (this.user.name =='点击登录')    {
-        this.$toast.fail("请先登录")
-      }
-      else {
+      if (store.state.userid)    {
         window.sessionStorage.clear()
         this.$router.push('login')
       }
 
-    },
-    address(){
-      if (this.user.name =='点击登录')    {
+      else {
         this.$toast.fail("请先登录")
       }
-      else {
-        window.sessionStorage.clear()
+
+    },
+    address(){
+      if (store.state.userid)    {
         this.$router.push('addresslist')
+      }
+      else {
+        this.$toast.fail("请先登录")
+      }
+    },
+    myorder(){
+      if (store.state.userid)    {
+        this.$router.push('myorder')
+      }
+      else {
+        this.$toast.fail("请先登录")
       }
     }
   },
   created() {
-    this.user.name = '点击登录'
-    if(JSON.parse(sessionStorage.getItem("user")) )
-      this.user = JSON.parse(sessionStorage.getItem("user"))
+
   },
   data(){
   return{

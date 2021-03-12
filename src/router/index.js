@@ -7,7 +7,8 @@ import Updateinfo from "@/views/profile/Updateinfo";
 import ProductDetail from "@/views/product/ProductDetail";
 import addresslist from "@/views/address/addresslist";
 import addressedit from "@/views/address/addressedit";
-
+import order from "@/views/order/order";
+import addressadd from "@/views/address/addressadd";
 
 const Home = () => import('views/home/Home')
 const Category = () => import('views/category/Category')
@@ -81,7 +82,14 @@ const routes = [
     path: '/addressedit',
     component:addressedit
   },
-
+  {
+    path: '/myorder',
+    component:order
+  },
+  {
+    path: '/addressadd',
+    component:addressadd
+  },
 ]
 const router = new VueRouter({
   routes,
