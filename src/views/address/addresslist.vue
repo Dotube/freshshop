@@ -10,6 +10,7 @@
         default-tag-text="默认"
         @add="onAdd"
         @edit="onEdit"
+        @select="onSelect"
     />
 
   </div>
@@ -17,7 +18,7 @@
 </template>
 
 <script>
-import { Toast } from 'vant';
+
 import axios from 'axios'
 import {HOST} from '../../common/config'
 import store from "@/store/store";
@@ -27,14 +28,16 @@ export default {
 
   data() {
     return {
-      chosenAddressId: '1',
+      chosenAddressId: store.state.addressid,
       addressInfo:[],
+      addressDetail:[],
       list: [
         {
           id: '',
           name: '',
           tel: '',
           address: '',
+          isDefault:''
         },
       ],
     };
@@ -43,10 +46,12 @@ export default {
     onAdd() {
       this.$router.push("/addressadd")
     },
-    onEdit(item, index) {
-     let id = index +1;
+    onSelect(list){
+      store.state.addressid = list.id
+    },
+    onEdit(list) {
+     let id = list.id
       this.$router.push('/addressedit/?id='+id)
-      Toast('编辑地址:' + id);
     },
     onClickLeft() {
       this.$router.go(-1)
@@ -59,12 +64,15 @@ export default {
       console.log(res.data)
       this.addressInfo = res.data
       this.list = this.addressInfo;
+      for(let i=0;i<this.list.length;i++)
+      {
+        this.list[i].address = this.addressDetail.concat(this.addressInfo[i].province,this.addressInfo[i].city,this.addressInfo[i].county,this.addressInfo[i].addressdetail)   ;
+      }
 
       for(let i=0;i<this.list.length;i++)
       {
-        this.list[i].tel=this.addressInfo[i].phone;
+        this.list[i].isDefault=this.addressInfo[i].isdefault;
       }
-
 
     })
   }

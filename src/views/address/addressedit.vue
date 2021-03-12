@@ -11,7 +11,9 @@
           show-delete
           @save="onSave"
           @delete="onDelete"
-
+          ref="myArea"
+          show-set-default
+          @change-default="changeDefault"
       />
     </div>
   </div>
@@ -22,6 +24,7 @@ import { Toast } from 'vant';
 import { areaList } from '@/assets/js/areaData';
 import {HOST} from "@/common/config";
 import axios from "axios";
+import store from "@/store/store";
 //import store from "@/store/store";
 
 export default {
@@ -29,37 +32,66 @@ export default {
   data() {
     return {
       areaList: areaList,
-      AddressInfo: {
-        name:'',
-        tel:'',
-      },
-      address:'',
+      AddressInfo: {},
       form:{
         id:'',
         userid:'',
+        addressDetail:'',
+        addressdetail:'',
         name:'',
-        phone:'',
-        address:''
+        tel:'',
+        province:'',
+        city:'',
+        county:'',
+        areaCode:'',
+        areacode:'',
+        isDefault:'',
+        isdefault:'',
       }
     };
   },
+  mounted() {
+    this.$refs.myArea.reset(this.AddressInfo.areaCode);
+  },
   methods: {
-    onSave() {
-      //let url= `${HOST}/address/update/${this.form.id}`
-      Toast('save');
+    onSave(AddressInfo) {
+      this.form = AddressInfo;
+      this.form.userid = store.state.userid
+      this.form.addressdetail= AddressInfo.addressDetail;
+      this.form.areacode= AddressInfo.areaCode;
+      this.form.isdefault= AddressInfo.isDefault;
+      let url= `${HOST}/address/update`
+      axios.post(url,this.form).then(res => {
+        console.log(res.data)
+        this.$router.go(-1)
+        Toast.success('修改成功');
+      })
+
     },
     onDelete() {
-      Toast('delete');
+      let url= `${HOST}/address/del/${this.form.id}`
+      axios.post(url).then(res=>{
+        console.log(res.data)
+        this.$router.go(-1)
+        Toast.success('删除成功');
+      });
     },
+    changeDefault(AddressInfo){
+      AddressInfo.isDefault = !AddressInfo.isDefault;
+    },
+
     back(){
       this.$router.go(-1)
     },
     getData(){
       let url= `${HOST}/address/selbyid/${this.form.id}`
       axios.get(url).then(res=>{
-        this.AddressInfo.tel = res.data.phone
-        this.AddressInfo.name = res.data.name
         console.log(res.data)
+        this.form = res.data;
+        this.AddressInfo = this.form;
+        this.AddressInfo.addressDetail = this.form.addressdetail;
+        this.AddressInfo.areaCode = this.form.areacode;
+        this.AddressInfo.isDefault = this.form.isdefault;
       });
     }
   },

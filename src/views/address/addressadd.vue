@@ -8,6 +8,8 @@
       <van-address-edit
           :area-list="areaList"
           @save="onSave"
+          show-set-default
+
       />
     </div>
   </div>
@@ -25,24 +27,32 @@ name: "addressadd",
     return {
       areaList: areaList,
       AddressInfo: {},
-      address:'',
       form:{
         id:'',
         userid:'',
+        addressDetail:'',
+        addressdetail:'',
         name:'',
-        phone:'',
-        address:''
+        tel:'',
+        province:'',
+        city:'',
+        county:'',
+        areaCode:'',
+        areacode:'',
+        isDefault:'',
+        isdefault:'',
       }
     };
   },
+
   methods: {
     onSave(AddressInfo) {
       let url= `${HOST}/address/add/`;
+      this.form = AddressInfo;
       this.form.userid = store.state.userid
-      this.form.id = AddressInfo.id;
-      this.form.name = AddressInfo.name;
-      this.form.phone =  AddressInfo.tel;
-      this.form.address = this.address.concat(AddressInfo.province,AddressInfo.city,AddressInfo.county,AddressInfo.addressDetail)
+      this.form.addressdetail= AddressInfo.addressDetail;
+      this.form.areacode= AddressInfo.areaCode;
+      this.form.isdefault= AddressInfo.isDefault;
       console.log(this.form)
       axios.post(url,this.form).then(res=>{
         console.log(res.data.state)
