@@ -32,12 +32,18 @@
 </template>
 
 <script>
+import store from "@/store/store";
 export default {
   name: "Cart",
   data(){
     return{
       result: ['a', 'b'],
       checked:true,
+    }
+  },
+  created() {
+    if(!store.state.userid){
+      this.$router.push("failed")
     }
   },
   methods:{

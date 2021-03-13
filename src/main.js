@@ -14,6 +14,7 @@ Vue.use(VueCookies)
 Vue.filter('filtermoney',function (val){
   return '￥'+val.toFixed(2)+' 元'
 })
+
 new Vue({
   render: h => h(App),
   router,

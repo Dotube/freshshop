@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import { Button ,Field,Form,Sidebar,  Col, Row ,SidebarItem,Search , Tabbar, TabbarItem ,
   NavBar ,Icon, GoodsAction,Sku, Card,GoodsActionIcon, GoodsActionButton ,Toast, Sticky,Popup,
-  Tag ,Uploader ,Swipe, SwipeItem,Lazyload,Grid,Checkbox, SubmitBar ,CheckboxGroup,AddressList,
+  Tag ,Uploader ,Swipe, SwipeItem,Lazyload,Grid,Checkbox, SubmitBar ,CheckboxGroup,AddressList,Empty,
   AddressEdit, Area ,GridItem,Image as VanImage} from 'vant';
 
 Vue.use(Button);
@@ -12,6 +12,7 @@ Vue.use(Checkbox);
 Vue.use(CheckboxGroup);
 Vue.use(AddressEdit);
 Vue.use(AddressList);
+Vue.use(Empty);
 Vue.use(Sku);
 Vue.use(TabbarItem);
 Vue.use(NavBar);

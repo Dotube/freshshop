@@ -1,7 +1,7 @@
 <template>
   <div class="grid" >
     <van-grid clickable :column-num="4" square :border="false" >
-      <van-grid-item v-for="(item,index) in list" :key="index" to="/">
+      <van-grid-item v-for="(item,index) in list" :key="index" @click="goto(index)">
         <img class="img" :src="item.image" />
         <img class="img2" :src="item.image2" />
         <span>{{item.title}}</span>
@@ -14,6 +14,12 @@
 <script>
 export default {
 name: "grid",
+  methods:{
+    goto(index){
+      this.$router.replace(`/category/mycategory?id=${index}`)
+      console.log(this.list.index)
+    }
+  },
   data() {
     return {
       list:[

@@ -9,6 +9,8 @@ import addresslist from "@/views/address/addresslist";
 import addressedit from "@/views/address/addressedit";
 import order from "@/views/order/order";
 import addressadd from "@/views/address/addressadd";
+import Mycategory from "@/views/category/Mycategory";
+import Failed from "@/views/home/Failed";
 
 const Home = () => import('views/home/Home')
 const Category = () => import('views/category/Category')
@@ -16,6 +18,17 @@ const Cart = () => import('views/cart/Cart')
 const Profile = () => import('views/profile/Profile')
 
 Vue.use(VueRouter)
+
+const routerPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+  return routerPush.call(this, location).catch(error => error);
+};
+//如果以上代码失效，可以把两种都写上，就可以解决了
+const originalReplace = VueRouter.prototype.replace;
+VueRouter.prototype.replace = function replace(location) {
+  return originalReplace.call(this, location).catch(err => err);
+};
+
 
 const routes = [
   {
@@ -42,7 +55,16 @@ const routes = [
     component:Category,
     meta:{
       ifshowtabbar:true
-    }
+    },
+    children:[
+      {
+        path: 'mycategory',
+        component:Mycategory,
+        meta:{
+          ifshowtabbar:true
+        },
+      }
+    ]
   },
   {
     path: '/cart',
@@ -90,6 +112,13 @@ const routes = [
     path: '/addressadd',
     component:addressadd
   },
+
+  {
+    path: '/failed',
+    component:Failed
+  },
+
+
 ]
 const router = new VueRouter({
   routes,
