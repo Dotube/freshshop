@@ -1,12 +1,16 @@
 import Vue from 'vue';
 import { Button ,Field,Form,Sidebar,  Col, Row ,SidebarItem,Search , Tabbar, TabbarItem ,
   NavBar ,Icon, GoodsAction,Sku, Card,GoodsActionIcon, GoodsActionButton ,Toast, Sticky,Popup,
-  Tag ,Uploader ,Swipe, SwipeItem,Lazyload,Grid,Checkbox, SubmitBar ,CheckboxGroup,AddressList,Empty,
-  AddressEdit, Area ,GridItem,Image as VanImage} from 'vant';
+  Tag ,Uploader ,Swipe, SwipeItem,Lazyload,Grid,Checkbox, SubmitBar ,CheckboxGroup,AddressList,
+  Empty, Stepper ,  Tab, Tabs,AddressEdit,SwipeCell , Area ,GridItem,Image as VanImage} from 'vant';
 
 Vue.use(Button);
 Vue.use(Search);
+Vue.use(SwipeCell);
 Vue.use(Area);
+Vue.use(Tab);
+Vue.use(Tabs);
+Vue.use(Stepper);
 Vue.use(Tabbar);
 Vue.use(Checkbox);
 Vue.use(CheckboxGroup);

@@ -13,6 +13,9 @@
 
 <script>
 import History from "@/components/history";
+import store from "@/store/store";
+//import {HOST} from "@/common/config";
+//import axios from "axios";
 export default {
 name: "Mypopup",
   components: {History},
@@ -24,8 +27,12 @@ name: "Mypopup",
   }
   },
   methods:{
-    onSearch(){
-
+    onSearch(searchval){
+      //let url= `${HOST}/goods/selbyname/${searchval}`;
+      //axios.get(url);
+      this.$router.push('/searchresult?searchval='+searchval);
+      console.log(searchval)
+      store.state.history.push(searchval);
     },
     onCancel(){
       this.$router.go(-1)

@@ -60,6 +60,7 @@ name: "Login",
         switch (response.msg){
             case '1':
               sessionStorage.setItem("user",JSON.stringify(this.form))
+
               this.$router.push('/profile')
               break;
             case '0':

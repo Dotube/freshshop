@@ -38,7 +38,7 @@ name: "Updateinfo",
   },
   data(){
     return {
-      firsticon: require('@/assets/images/firsticon.jpg'),
+      firsticon: require('@/assets/images/firstava.jpg'),
       form:{
         icon:''
       }

@@ -18,6 +18,7 @@ import Grid from "@/components/grid";
 import Search from "@/components/search";
 import Product from "@/components/product";
 
+
 export default {
   name: "Home",
   components: {
@@ -30,7 +31,8 @@ export default {
     searchclick(){
       this.$router.push('/home/popup')
     }
-  }
+  },
+
 }
 </script>
 

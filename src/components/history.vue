@@ -3,35 +3,49 @@
     <div class="history">
       <div class="top">
         <h4>历史记录</h4>
-        <van-icon name="delete-o" />
+        <van-icon name="delete-o" @click="ondelete"/>
       </div>
-      <div class="down">
-        <van-tag plain type="default">烘焙</van-tag>
-        <van-tag plain type="default">橘子</van-tag>
-        <van-tag plain type="default">香蕉</van-tag>
-        <van-tag plain type="default">青菜</van-tag>
-        <van-tag plain type="default">奶茶</van-tag>
+      <div class="down" >
+        <span v-if="!history[0]" style="line-height: 0.1rem; font-size: 0.15rem;color: #999999" >暂无历史搜索</span>
+        <van-tag v-else plain  type="default"  :key="index" v-for="(items,index) in history " @click="onhistory(items)">{{ items }}</van-tag>
       </div>
     </div>
+
     <div class="history">
       <div class="top">
         <h4>热门搜索</h4>
-        <van-icon name="delete-o" />
       </div>
       <div class="down">
-        <van-tag plain type="danger">烘焙</van-tag>
-        <van-tag plain type="default">橘子</van-tag>
+        <van-tag plain type="danger">果</van-tag>
         <van-tag plain type="default">香蕉</van-tag>
-        <van-tag plain type="default">青菜</van-tag>
-        <van-tag plain type="default">奶茶</van-tag>
+        <van-tag plain type="default">肉</van-tag>
+        <van-tag plain type="default">鱼</van-tag>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import store from "@/store/store";
 export default {
-name: "history"
+name: "history",
+  data(){
+  return{
+    history:[],
+  }
+  },
+  created() {
+  this.history = store.state.history
+  },
+  methods:{
+    onhistory(items){
+      this.$router.push('/searchresult?searchval='+items)
+    },
+    ondelete(){
+      store.state.history = [];
+      location.reload();
+    }
+  }
 }
 </script>
 

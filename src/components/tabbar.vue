@@ -31,7 +31,7 @@ name: "tabbar",
      this.$router.replace("/home")
     },
     gocate(){
-      this.$router.replace("/category/mycategory?id=0")
+      this.$router.replace("/category/mycategory")
     },
     gocart(){
       this.$router.replace("/cart")

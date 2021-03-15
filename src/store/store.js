@@ -6,10 +6,11 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    userid:'',
-    name:'',
-    addressid:'',
-    cateindex:'',
+    userid:'', //用户id
+    name:'',//姓名
+    addressid:'', //地址id
+    cateindex:'', //
+    history:[],
   },
   mutations: {
 

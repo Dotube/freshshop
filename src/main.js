@@ -10,7 +10,6 @@ import VueCookies from 'vue-cookies'
 Vue.config.productionTip = false
 Vue.use(VueCookies)
 
-
 Vue.filter('filtermoney',function (val){
   return '￥'+val.toFixed(2)+' 元'
 })

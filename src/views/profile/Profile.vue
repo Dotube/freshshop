@@ -52,12 +52,14 @@ export default {
       console.log(res.data)
       this.userInfo = res.data
       store.state.userid = this.userInfo.id
+      console.log(this.userInfo.id)
     })
   },
   data(){
     return{
-      firsticon:require('@/assets/images/firsticon.jpg'),
-     // firsticon:this.user.icon,
+    //  myavator:'',
+     // imgScr:'',
+     firsticon:require('@/assets/images/firstava.jpg'),
       user:{},
       record:[],
 

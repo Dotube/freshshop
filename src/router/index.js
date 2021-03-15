@@ -11,6 +11,7 @@ import order from "@/views/order/order";
 import addressadd from "@/views/address/addressadd";
 import Mycategory from "@/views/category/Mycategory";
 import Failed from "@/views/home/Failed";
+import SearchResult from "@/views/home/SearchResult";
 
 const Home = () => import('views/home/Home')
 const Category = () => import('views/category/Category')
@@ -117,7 +118,10 @@ const routes = [
     path: '/failed',
     component:Failed
   },
-
+  {
+    path: '/searchresult',
+    component:SearchResult
+  },
 
 ]
 const router = new VueRouter({

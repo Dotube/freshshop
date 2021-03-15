@@ -33,7 +33,7 @@ name: "mycategory",
   created() {
     const id = store.state.cateindex;
     console.log(id)
-    this.$router.push(`/category/mycategory?id=0`)
+    this.$router.push(`/category/mycategory`)
     let url = `${HOST}/goods/selbykind/0`;
     axios.get(url).then(res => {
       console.log(res.data)

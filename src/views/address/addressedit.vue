@@ -50,9 +50,7 @@ export default {
       }
     };
   },
-  mounted() {
-    this.$refs.myArea.reset(this.AddressInfo.areaCode);
-  },
+
   methods: {
     onSave(AddressInfo) {
       this.form = AddressInfo;

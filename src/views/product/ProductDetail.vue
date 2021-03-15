@@ -60,6 +60,7 @@
         :show-add-cart-btn="false"
         :show-buy-btn="false"
         buy-text="加入购物车"
+        @buy-clicked="buyclick"
     />
   </div>
   <mygoodaction @addToCart="addtocart"></mygoodaction>
@@ -79,6 +80,11 @@ export default {
   data() {
     return {
       goodsInfo: [],
+      buyInfo:{
+        userid:'',
+        goodid:'',
+        num:'',
+      },
       Searchvalue: '',
       show: false,
       sku: {
@@ -95,33 +101,47 @@ export default {
     }
   },
 
-  methods:{
-    back(){
+  methods: {
+    back() {
       this.$router.go(-1)
     },
-    gotocart(){
+    gotocart() {
       this.$router.push('/cart')
 
     },
-    searchbar(){
+    searchbar() {
       this.$router.push('/home/popup')
       console.log(store.state.id)
     },
-    addtocart(){
-      this.show=true;
+    addtocart() {
+      this.show = true;
+    },
+    buyclick(skuData){
+      this.buyInfo.goodid =  this.sku.id;
+      this.buyInfo.num = skuData.selectedNum;
+      console.log(this.buyInfo)
+      let url= `${HOST}/cart/add`
+      axios.post(url,this.buyInfo).then(res=>{
+        if(res.data.state ===200){
+          this.$toast.success('已加入购物车')
+          this.show = false;
+        }
+
+      });
     }
   },
-
   created() {
-    //const gid =store.state.gdid ;
+    const userid =store.state.userid ;
      const gid = this.$route.query.id
     let url= `${HOST}/goods/selbyid/${gid}`
     axios.post(url).then(res=>{
       console.log(res.data)
       this.goodsInfo=res.data;
       this.goods.picture = require('@/assets/images/goods/' + this.goodsInfo.images + '.jpg' )
+      this.sku.id = this.goodsInfo.id
       this.sku.price = this.goodsInfo.price.toFixed(2)
       this.sku.stock_num = this.goodsInfo.remain
+      this.buyInfo.userid = userid
     });
 
    //console.log(store.state.gdid)
